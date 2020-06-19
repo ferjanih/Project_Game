@@ -1,12 +1,7 @@
-f = -lSDL -lSDL_image -lSDL_mixer 
+prog:main.o menu.o 
+	gcc main.o menu.o -o prog -lSDL -lSDL_ttf -lSDL_mixer -lSDL_image -g
+main.o:main.c
+	gcc -c main.c -g
+enig.o:enig.c
+	gcc -c menu.c -g
 
-prog: fonctions.o Menu.o
-	gcc fonctions.o Menu.c -o prog $(f)
-Menu.o: Menu.c fonctions.h
-	gcc -c Menu.c fonctions.h $(f)
-fonctions.o:fonctions.c fonctions.h
-	gcc -c fonctions.c fonctions.h $(f)
-
-
-clean:
-	rm *.o *.h.gch prog
